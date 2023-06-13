@@ -1,0 +1,8 @@
+<br />
+<b>Warning</b>:  fopen(uploadsaabamilxa.pdf): Failed to open stream: No such file or directory in <b>C:\xampp\htdocs\e-learning\download.php</b> on line <b>5</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught TypeError: feof(): Argument #1 ($stream) must be of type resource, bool given in C:\xampp\htdocs\e-learning\download.php:8
+Stack trace:
+#0 C:\xampp\htdocs\e-learning\download.php(8): feof(false)
+#1 {main}
+  thrown in <b>C:\xampp\htdocs\e-learning\download.php</b> on line <b>8</b><br />

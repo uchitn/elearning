@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="login-box">
+            <input type="text" name="username" id="user" placeholder="Enter your username">
+        </div>
+        <div class="login-box">
+            <input type="password" name="pass" id="pass" placeholder="Enter your password">
+        </div>
+        <div id="btn">
+            <button type="submit" id="btn">login</button> 
+        </div>
+        <div class="remember-me">
+            <input type="checkbox"> Remember me?
+            <a href="">Need help?</a>
+        </div>
+        <div class="new-to">
+            <p>New to WeCare?</p>
+            <a href="signup.html">Sign up now</a>
+        </div>
+
+
+    </div>
+    
+</body>
+
+<script>
+
+let login=()=>{
+
+    document.getElementById("btn").addEventListener("click",function(){
+
+let user=document.getElementById("user").value;
+let pass=document.getElementById("pass").value;
+
+let req=new XMLHttpRequest();
+req.open("post","login.php",true);
+req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+req.send("user="+user+"&pass="+pass);
+
+req.onload=function(){
+    
+    if(this.responseText==1){
+
+        Swal.fire(
+    'Login successfull',
+    'Redirecting to another site',
+    'success'
+  )
+
+  setTimeout(function(){
+window.location.href="dashboard.html";
+  },2000)
+    }else if(this.responseText=="Incorrect password"){
+        Swal.fire({
+  icon: 'error',
+  title: 'Incorrect password',
+  text: 'please input correct password',
+ 
+})
+    }else if(this.responseText=="Email not found"){
+
+        Swal.fire(
+  'Email not found',
+  'Please enter a correct email',
+  'question'
+)
+
+    }
+
+}
+
+    });
+}
+
+login();
+</script>
+
+</html>
